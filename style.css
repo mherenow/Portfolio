@@ -77,12 +77,44 @@ p {
     border: 1px solid var(--primary-color);
     border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: var(--primary-color);
+    z-index: -1;
+    transition: width 0.3s ease;
 }
 
 .btn:hover {
-    background: rgba(100, 255, 218, 0.1);
-    transform: translateY(-3px);
+    color: white; /* Text color changes to white on hover */
+}
+
+.btn:hover:before {
+    width: 100%; /* Fill expands from left to right */
+}
+
+/* For the accent button (if you have one) */
+.btn-outline {
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-outline:before {
+    background-color: var(--accent-color);
+}
+
+.btn-outline:hover {
+    color: white;
 }
 
 section {
